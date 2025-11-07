@@ -1,4 +1,3 @@
--- initial DB schema for projeto-2
 CREATE TABLE IF NOT EXISTS todos (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
