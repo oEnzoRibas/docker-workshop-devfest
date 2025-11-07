@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=todo_user
+      - POSTGRES_PASSWORD=todo_pass
+      - POSTGRES_DB=todo_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./code/projeto-2/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - todo-net
+
+  app:
+    build:
+      context: ./code/projeto-2
+    ports:
+      - "3000:3000"
+    environment:
+      - PGHOST=db
+      - PGUSER=todo_user
+      - PGPASSWORD=todo_pass
+      - PGDATABASE=todo_db
+      - PGPORT=5432
+    depends_on:
+      - db
+    networks:
+      - todo-net
+
+
+  web:
+    build:
+      context: ./code/projeto-3
+    ports:
+      - "8080:80"
+    networks:
+      - todo-net
+
+volumes:
+  pgdata:
+
+networks:
+  todo-net:
+    driver: bridge
