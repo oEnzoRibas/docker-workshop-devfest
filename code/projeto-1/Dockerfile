@@ -1,13 +1,9 @@
-FROM node:22-alpine
+FROM alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY script.sh .
 
-RUN npm install
+RUN chmod +x script.sh
 
-COPY . .
-
-EXPOSE 3000
-
-CMD ["node", "src/app.js"]
+CMD ["sh", "./script.sh"]

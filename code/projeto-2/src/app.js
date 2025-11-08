@@ -1,24 +1,13 @@
 const express = require('express');
-const db = require('./db');
-const todosRouter = require('./routes/todos');
+const routes = require('./routes/index');
 
 const app = express();
-app.use(express.json());
-app.use('/todos', todosRouter);
-
 const PORT = process.env.PORT || 3000;
 
-async function init() {
-  try {
-    await db.init();
-    console.log('DB initialized');
-  } catch (err) {
-    console.error('DB init failed, continuing without DB:', err.message);
-  }
+app.use(express.json());
+// register routes: call exported function which attaches the router to the app
+routes(app);
 
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-  });
-}
-
-init();
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});

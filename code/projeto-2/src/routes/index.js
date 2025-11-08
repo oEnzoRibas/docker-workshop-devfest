@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Welcome to the Docker Basics Express App!');
+    res.send('Welcome to the Docker Basics App');
 });
 
 router.get('/about', (req, res) => {
