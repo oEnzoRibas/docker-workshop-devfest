@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "DOCKER-WORKSHOP",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
