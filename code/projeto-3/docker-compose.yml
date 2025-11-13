@@ -4,11 +4,7 @@ services:
     env_file:
       - ./.env
     ports:
-<<<<<<< HEAD
-      - "5432:5432"
-=======
       - "5444:5444"
->>>>>>> fbc79bc (adding projects done in the workshop)
     volumes:
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -25,18 +21,11 @@ services:
     volumes:
       - ./src:/app/src
     depends_on:
-<<<<<<< HEAD
       db:
         condition: service_started
-=======
-      - db
->>>>>>> fbc79bc (adding projects done in the workshop)
-    restart: unless-stopped
+restart: unless-stopped
     container_name: projeto-3-app
 
 volumes:
-<<<<<<< HEAD
   db-data:
-=======
-  db-data:
->>>>>>> fbc79bc (adding projects done in the workshop)
+
